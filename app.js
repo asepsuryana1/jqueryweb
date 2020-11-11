@@ -17,10 +17,7 @@ const pool = new Pool({
   port: 5432,
 })
 
-pool.query('SELECT * from bread', (err, res) => {
-  console.log(err, res.rows)
-  pool.end()
-})
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
