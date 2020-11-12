@@ -5,9 +5,6 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const { Pool} = require('pg')
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-
 var app = express();
 const pool = new Pool({
   user: 'postgres',
@@ -16,6 +13,9 @@ const pool = new Pool({
   password: 'kucing',
   port: 5432,
 })
+var indexRouter = require('./routes/index');
+var breadRouter = require('./routes/bread');
+
 
 
 
@@ -30,7 +30,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/bread', breadRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

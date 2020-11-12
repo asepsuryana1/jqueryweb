@@ -1,11 +1,43 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
+
+<head>
+  <title></title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <script type="text/javascript" src="/javascripts/jquery-3.5.1.js"> </script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+  <h1>Bread</h1>
+  <div class= "container">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>string</th>
+          <th>integer</th>
+          <th>float</th>
+          <th>date</th>
+          <th>boolean</th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+  <script>
+    const API_URL = 'http://localhost:3000'
+
+$.ajax({
+  method: "POST",
+  url: "some.php",
+  data: { name: "John", location: "Boston" }
+})
+  .done(function( msg ) {
+    alert( "Data Saved: " + msg );
+  });
+
+  </script>
+</body>
+
 </html>
