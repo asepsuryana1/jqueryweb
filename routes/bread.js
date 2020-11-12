@@ -5,11 +5,6 @@ var router = express.Router();
 
 
 module.exports = function(pool){
-
-
-
-  
-
   router.get('/', function(req, res, next) {
     pool.query('SELECT * from bread', (err, data) => {
       if (err) return res.send(err)

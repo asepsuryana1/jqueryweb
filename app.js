@@ -14,7 +14,7 @@ const pool = new Pool({
   port: 5432,
 })
 var indexRouter = require('./routes/index');
-var breadRouter = require('./routes/bread');
+var breadRouter = require('./routes/bread')(pool);
 
 
 

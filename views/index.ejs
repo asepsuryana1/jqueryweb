@@ -11,7 +11,7 @@
 
 <body>
   <h1>Bread</h1>
-  <div class= "container">
+  <div class="container">
     <table class="table table-striped">
       <thead>
         <tr>
@@ -25,17 +25,25 @@
       </thead>
     </table>
   </div>
-  <script>
-    const API_URL = 'http://localhost:3000'
+  <script type='text/javascript'>
+    const API_URL = 'http://localhost:3000/bread'
 
-$.ajax({
-  method: "POST",
-  url: "some.php",
-  data: { name: "John", location: "Boston" }
-})
-  .done(function( msg ) {
-    alert( "Data Saved: " + msg );
-  });
+    $(Document).ready(() => {
+      loadData();
+    })
+
+    const loadData = () => {
+      $.ajax({
+        method: 'GET',
+        url: 'API_URL',
+        dataType: 'json'
+      })
+        .done(function (data) {
+          console.log(data);
+        });
+    }
+
+
 
   </script>
 </body>
