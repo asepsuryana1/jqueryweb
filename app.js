@@ -14,7 +14,7 @@ const pool = new Pool({
   port: 5432,
 })
 var indexRouter = require('./routes/index');
-var breadRouter = require('./routes/bread')(pool);
+var siswaRouter = require('./routes/siswa')(pool);
 
 
 
@@ -30,7 +30,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/bread', breadRouter);
+app.use('/siswa', siswaRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

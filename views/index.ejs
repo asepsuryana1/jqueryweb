@@ -11,22 +11,25 @@
 
 <body>
   <h1>Bread</h1>
-  <div class="container">
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>string</th>
-          <th>integer</th>
-          <th>float</th>
-          <th>date</th>
-          <th>boolean</th>
-        </tr>
-      </thead>
-    </table>
-  </div>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>string</th>
+        <th>integer</th>
+        <th>float</th>
+        <th>date</th>
+        <th>boolean</th>
+      </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+  </table>
+
   <script type='text/javascript'>
-    const API_URL = 'http://localhost:3000/bread'
+    const API_URL = 'http://localhost:3000/siswa'
 
     $(Document).ready(() => {
       loadData();
@@ -35,11 +38,27 @@
     const loadData = () => {
       $.ajax({
         method: 'GET',
-        url: 'API_URL',
+        url: API_URL,
         dataType: 'json'
       })
         .done(function (data) {
-          console.log(data);
+          let html = ''
+          data.forEach((item) => {
+            html += `
+  <tr>
+    <td> ${item.id}</td>
+    <td> ${item.string}</td>
+    <td> ${item.integer}</td>
+    <td> ${item.float}</td>
+    <td> ${item.date}</td>
+    <td> ${item.boolean}</td>
+    </tr>
+  `
+
+
+          });
+
+          $('table tbody').html(html)
         });
     }
 
