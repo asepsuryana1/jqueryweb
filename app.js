@@ -9,7 +9,7 @@ var app = express();
 const pool = new Pool({
   user: 'postgres',
   host: 'localhost',
-  database: 'cobaDB',
+  database: 'siswaDB',
   password: 'kucing',
   port: 5432,
 })

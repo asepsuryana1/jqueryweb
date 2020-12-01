@@ -21,19 +21,72 @@
         <th>float</th>
         <th>date</th>
         <th>boolean</th>
+        <th>Actions</th>
       </tr>
     </thead>
+
     <tbody>
 
     </tbody>
   </table>
+  <form id='bread-form'>
+    <div class="form-group row">
+      <label for="nama" class="col-sm-2 col-form-label">nama</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="nama" placeholder="nama">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="umur" class="col-sm-2 col-form-label">umur</label>
+      <div class="col-sm-10">
+        <input type="number" class="form-control" id="umur" placeholder="umur">
+      </div>
+    </div>
+   
+    
+    <fieldset class="form-group">
+      <div class="row">
+        <legend class="col-form-label col-sm-2 pt-0">isboolean</legend>
+        <div class="col-sm-10">
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="isboolean" id="isboolean" value="true" checked>
+            <label class="form-check-label" for="isboolean1">
+              true
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="isboolean" id="isboolean" value="false">
+            <label class="form-check-label" for="isboolean2">
+              false
+            </label>
+          </div>
+
+        </div>
+      </div>
+    </fieldset>
+
+    <div class="form-group row">
+      <div class="col-sm-10">
+        <button type="submit" class="btn btn-primary">Save</button>
+      </div>
+    </div>
+  </form>
 
   <script type='text/javascript'>
     const API_URL = 'http://localhost:3000/siswa'
 
     $(Document).ready(() => {
       loadData();
+      //evenListener
+      $('#bread-form').submit((event) => {
+
+        event.preventDefault();
+        saveData();
+
+      })
     })
+
+
 
     const loadData = () => {
       $.ajax({
@@ -45,15 +98,14 @@
           let html = ''
           data.forEach((item) => {
             html += `
-  <tr>
+    <tr>
     <td> ${item.id}</td>
-    <td> ${item.string}</td>
-    <td> ${item.integer}</td>
-    <td> ${item.float}</td>
-    <td> ${item.date}</td>
-    <td> ${item.boolean}</td>
+    <td> ${item.nama}</td>
+    <td> ${item.umur}</td>
+    <td> ${item.isboolean}</td>
+       <td><button type='button' class= 'btn btn-danger'>delete</button?</td>
     </tr>
-  `
+   `
 
 
           });
@@ -61,6 +113,21 @@
           $('table tbody').html(html)
         });
     }
+
+    const saveData = () => {
+      $.ajax({
+        method: 'POST',
+        url: API_URL,
+        dataType: 'json',
+        data: {
+          nama: $('#nama').val(), umur: $('#umur').val(), isboolean: $('#isboolean').val()
+        }
+      })
+        .done(function (data) {
+          loadData()
+        });
+    }
+
 
 
 
